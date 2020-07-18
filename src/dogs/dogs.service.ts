@@ -7,8 +7,8 @@ import { CreateDogDto } from './dto/create-dog.dto';
 export class DogsService {
   private readonly dogs: Dog[] = [];
 
-  create(catDto: CreateDogDto): Dog {
-    const { name, age, breed } = catDto;
+  create(dogDto: CreateDogDto): Dog {
+    const { name, age, breed } = dogDto;
     const dog: Dog = {
       id: uuidv4(),
       name,
@@ -22,5 +22,9 @@ export class DogsService {
 
   getAll(): Dog[] {
     return this.dogs;
+  }
+
+  getById(id: string): Dog {
+    return this.dogs.find(dog => dog.id === id);
   }
 }

@@ -2,7 +2,11 @@ export interface Dog {
   id: string;
   name: string;
   age: number;
-  breed: string;
+  breed: Breed;
 }
 
-export enum Breed {}
+export enum Breed {
+  Labrador = 'Labrador',
+  Pug = 'Pug',
+  Bulldog = 'Bulldog',
+}

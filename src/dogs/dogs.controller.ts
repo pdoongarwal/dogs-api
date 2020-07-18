@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { CreateDogDto } from './dto/create-dog.dto';
 import { DogsService } from './dogs.service';
 import { Dog } from './interfaces/dog.interface';
@@ -8,12 +8,17 @@ export class DogsController {
   constructor(private dogsService: DogsService) {}
 
   @Get()
-  async getAll(): Promise<Dog[]> {
+  getAll(): Dog[] {
     return this.dogsService.getAll();
   }
 
+  @Get('/:id')
+  getById(@Param('id') id: string): Dog {
+    return this.dogsService.getById(id);
+  }
+
   @Post()
-  async create(@Body() createDogDto: CreateDogDto): Promise<Dog> {
+  create(@Body() createDogDto: CreateDogDto): Dog {
     return this.dogsService.create(createDogDto);
   }
 }
