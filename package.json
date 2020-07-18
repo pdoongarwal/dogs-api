@@ -1,8 +1,8 @@
 {
-  "name": "cat",
+  "name": "dog",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Dogs API",
+  "author": "Prabhat Doongarwal",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -26,7 +26,8 @@
     "@nestjs/platform-express": "^7.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
