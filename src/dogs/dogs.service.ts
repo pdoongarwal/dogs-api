@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Dog } from './interfaces/dog.interface';
 import { CreateDogDto } from './dto/create-dog.dto';
@@ -25,6 +25,12 @@ export class DogsService {
   }
 
   getById(id: string): Dog {
-    return this.dogs.find(dog => dog.id === id);
+    const found = this.dogs.find(dog => dog.id === id);
+
+    if (!found) {
+      throw new NotFoundException(`Dog with ID ${id} not found`);
+    }
+
+    return found;
   }
 }

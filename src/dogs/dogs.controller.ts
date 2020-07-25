@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { CreateDogDto } from './dto/create-dog.dto';
 import { DogsService } from './dogs.service';
 import { Dog } from './interfaces/dog.interface';
@@ -18,6 +26,7 @@ export class DogsController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe)
   create(@Body() createDogDto: CreateDogDto): Dog {
     return this.dogsService.create(createDogDto);
   }
